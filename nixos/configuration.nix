@@ -25,10 +25,10 @@
     };
     firewall = {
       allowedTCPPorts = [ 
-          5900
+        47984 47989 47990 48010 # For Sunshine RDP
         ];
       allowedUDPPorts = [ 
-        
+        47998 47999 48000 48010 # For Sunshine RDP
         ];
     };
     # DNS Management
@@ -53,8 +53,17 @@
     isNormalUser = true;
     extraGroups = [ 
     "wheel" # For sudo
+    "video" "render" "input" "audio" # For sunshine RDP
     ]; 
     packages = with pkgs; [  ];
+  };
+
+  # Remote desktop services
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
   };
 
   # Wayland environment
@@ -98,7 +107,7 @@
     iproute2
 
     # Remote Management
-    waypipe wayvnc
+    waypipe sunshine
 
     # Utilities
     grim slurp btop git stow ffmpeg
