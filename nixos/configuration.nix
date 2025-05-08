@@ -25,10 +25,10 @@
     };
     firewall = {
       allowedTCPPorts = [ 
-        47984 47989 47990 48010 # For Sunshine RDP
+          5900
         ];
       allowedUDPPorts = [ 
-        47998 47999 48000 48010 # For Sunshine RDP
+        
         ];
     };
     # DNS Management
@@ -53,7 +53,6 @@
     isNormalUser = true;
     extraGroups = [ 
     "wheel" # For sudo
-    "video" "render" "input" "audio" # For sunshine RDP
     ]; 
     packages = with pkgs; [  ];
   };
@@ -74,14 +73,6 @@
 
   # Core system services
   services.dbus.enable = true;
-
-  # Remote desktop services
-  services.sunshine = {
-    enable = true;
-    autoStart = true;
-    capSysAdmin = true;
-    openFirewall = true;
-  };
 
   # System-wide packages
   environment.systemPackages = with pkgs; [
@@ -107,7 +98,7 @@
     iproute2
 
     # Remote Management
-    waypipe sunshine
+    waypipe wayvnc
 
     # Utilities
     grim slurp btop git stow ffmpeg
