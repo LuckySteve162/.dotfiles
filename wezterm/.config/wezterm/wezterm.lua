@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 
-config.color_scheme = 'Calamity'
+config.color_scheme = 'Canvased Pastel (terminal.sexy)'
 
 -- and finally, return the configuration to wezterm
 return config
