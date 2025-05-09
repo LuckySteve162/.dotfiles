@@ -15,6 +15,6 @@ wallpapers=(
 while true; do
   for wp in "${wallpapers[@]}"; do
     swww img "$wp" --transition-type any --transition-duration 1
-    sleep 60  # Wait 60 seconds
+    sleep 600  # Wait 60 seconds
   done
 done
