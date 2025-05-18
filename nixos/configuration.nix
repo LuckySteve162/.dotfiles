@@ -12,21 +12,20 @@
   time.timeZone = "America/Chicago";
 
   # Networking
-/*
   networking = {
-    interfaces.enp5s0 = {
+    interfaces.enp61s0f0 = {
       ipv4.addresses = [{
-        address = "172.16.12king2.14";
+        address = "172.16.122.23";
         prefixLength = 24;
       }];
     };
     defaultGateway = {
       address = "172.16.122.1";
-      interface = "enp5s0";
+      interface = "enp61s0f0";
     };
     firewall = {
       allowedTCPPorts = [ 
-        47984 47989 47990 48010 # For Sunshine RDP
+        47984 47989 47990 48000 48010 # For Sunshine RDP
         ];
       allowedUDPPorts = [ 
         47998 47999 48000 48010 # For Sunshine RDP
@@ -35,7 +34,7 @@
     # DNS Management
     nameservers = [ "1.1.1.1" ];
   };
-*/
+
   networking.wireless.iwd.enable = true;
   networking.useNetworkd = true;
   networking.interfaces.wlo1.useDHCP = true;
@@ -48,6 +47,9 @@
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Thunderbolt support
+  services.hardware.bolt.enable = true;
 
   # OpenSSH daemon
   services.openssh.enable = true;
