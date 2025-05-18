@@ -12,10 +12,11 @@
   time.timeZone = "America/Chicago";
 
   # Networking
+/*
   networking = {
     interfaces.enp5s0 = {
       ipv4.addresses = [{
-        address = "172.16.122.14";
+        address = "172.16.12king2.14";
         prefixLength = 24;
       }];
     };
@@ -34,15 +35,32 @@
     # DNS Management
     nameservers = [ "1.1.1.1" ];
   };
+*/
+  networking.wireless.iwd.enable = true;
+  networking.useNetworkd = true;
+  networking.interfaces.wlo1.useDHCP = true;
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
 
   # Bootloader
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # OpenSSH daemon
   services.openssh.enable = true;
+
+  # Graphics
+  nixpkgs.config.allowUnfree = true;
+  services.xserver.videoDrivers = [ "modesetting" ];
+  hardware.enableAllFirmware = true;
+  boot.kernelParams = [
+    "i915.force_probe=*"
+    "i915.enable_psr=0"
+  ];
+  
 
   # Locale
   i18n.defaultLocale = "en_US.UTF-8";
@@ -94,11 +112,20 @@
     # Clipboard
     cliphist wl-clipboard wtype
 
+    # workflow apps
+    bitwarden-desktop
+
     # Audio
     pulsemixer pipewire wireplumber
 
     # Text Editor
     neovim
+
+    # setting gui's
+    nwg-displays
+
+    # Browser
+    brave
 
     # Power & lock
     batsignal waylock cage swayidle
@@ -110,7 +137,7 @@
     waypipe sunshine
 
     # Utilities
-    grim slurp btop git stow ffmpeg
+    grim slurp btop git stow ffmpeg pciutils mesa-demos
   ];
 
   system.stateVersion = "24.11";
