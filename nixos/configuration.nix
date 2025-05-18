@@ -121,6 +121,9 @@
     # Text Editor
     neovim
 
+    # Remote Desktop
+    moonlight-qt
+
     # setting gui's
     nwg-displays
 
