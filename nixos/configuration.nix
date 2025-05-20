@@ -19,10 +19,6 @@
         prefixLength = 24;
       }];
     };
-    defaultGateway = {
-      address = "172.16.124.1";
-      interface = "enp61s0f0";
-    };
     firewall = {
       allowedTCPPorts = [ 
         47984 47989 47990 48000 48010 # For Sunshine RDP
@@ -58,6 +54,12 @@
   boot.kernelParams = [
     "i915.force_probe=*"
     "i915.enable_psr=0"
+  ];
+  hardware.opengl.enable = true;
+  hardware.opengl.extraPackages = with pkgs; [
+    intel-media-driver
+    libva
+    libva-utils
   ];
   
 
@@ -114,6 +116,9 @@
     # workflow apps
     bitwarden-desktop
 
+    # Entertainment
+    spotify discord
+
     # Audio
     pulsemixer pipewire wireplumber
 
@@ -121,7 +126,7 @@
     neovim
 
     # Remote Desktop
-    moonlight-qt
+    moonlight-qt libva-utils
 
     # setting gui's
     nwg-displays
@@ -130,7 +135,7 @@
     brave
 
     # Power & lock
-    batsignal waylock cage swayidle
+    batsignal swaylock cage swayidle
 
     # Networking CLI
     iproute2
@@ -139,7 +144,7 @@
     waypipe sunshine
 
     # Utilities
-    grim slurp btop git stow ffmpeg pciutils mesa-demos
+    grim slurp btop git stow ffmpeg pciutils mesa-demos bottles
   ];
 
   system.stateVersion = "24.11";
