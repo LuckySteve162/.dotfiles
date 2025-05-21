@@ -37,6 +37,17 @@
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
+  # Audio
+  services.pipewire = {
+    enable = true;
+    audio.enable = true;
+    pulse.enable = true;
+  };
+  hardware.firmware = with pkgs; [
+    sof-firmware
+    linux-firmware
+  ];
+
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -120,7 +131,7 @@
     spotify discord
 
     # Audio
-    pulsemixer pipewire wireplumber
+    pipewire helvum pulseaudio
 
     # Text Editor
     neovim
@@ -129,7 +140,7 @@
     moonlight-qt libva-utils
 
     # setting gui's
-    nwg-displays
+    nwg-displays nwg-look
 
     # Browser
     brave
