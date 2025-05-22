@@ -128,7 +128,7 @@
     bitwarden-desktop
 
     # Entertainment
-    spotify discord
+    spotify discord 
 
     # Audio
     pipewire helvum pulseaudio
