@@ -146,7 +146,7 @@
     brave
 
     # Power & lock
-    batsignal swaylock cage swayidle
+    swaync swaylock cage swayidle
 
     # Networking CLI
     iproute2
