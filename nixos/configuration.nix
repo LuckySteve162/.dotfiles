@@ -124,8 +124,8 @@
     # Clipboard
     cliphist wl-clipboard wtype
 
-    # workflow apps
-    bitwarden-desktop
+    # work apps
+    bitwarden-desktop nmap 
 
     # Entertainment
     spotify discord 
